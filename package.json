@@ -1,0 +1,56 @@
+{
+  "name": "akeneo-design-system",
+  "version": "0.0.1",
+  "description": "Akeneo design system",
+  "main": "lib/index.js",
+  "scripts": {
+    "prebuild": "rimraf lib && yarn test:run && yarn lint:check && yarn ts-build",
+    "prebuild-dev": "rimraf lib && yarn ts-build",
+    "prebuild-watch": "find lib -name \"*.d.ts\" -delete && yarn ts-build",
+    "ts-build": "tsc -p ./tsconfig.build.json --emitDeclarationOnly",
+    "check-types": "tsc",
+    "check-types:watch": "yarn check-types -- --watch",
+    "test:run": "jest",
+    "test:watch": "jest --watch",
+    "lint:fix": "echo 'prettier --config .prettierrc.json --parser typescript --write \"./src/**/*.ts\";'",
+    "lint:check": "echo 'prettier --config .prettierrc.json --parser typescript --check \"./src/**/*.ts\";'",
+    "storybook:start": "start-storybook -p 6006",
+    "storybook:build": "build-storybook",
+    "lib:build:prod": "yarn prebuild && export NODE_ENV=production && rollup -c",
+    "lib:build:watch": "yarn prebuild-watch && export NODE_ENV=dev && rollup --watch -c",
+    "lib:build:analyze": "yarn build:prod --config-analyze"
+  },
+  "author": "akeneo",
+  "license": "OSL-3.0",
+  "dependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "styled-components": "^4.3.2"
+  },
+  "peerDependencies": {
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-syntax-flow": "^7.10.4",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@storybook/addon-actions": "^6.0.4",
+    "@storybook/addon-essentials": "^6.0.4",
+    "@storybook/addon-links": "^6.0.4",
+    "@storybook/react": "^6.0.4",
+    "@testing-library/jest-dom": "^5.11.3",
+    "@testing-library/react": "^10.4.8",
+    "@types/styled-components": "^5.1.2",
+    "babel-loader": "8.0.5",
+    "jest": "^26.4.0",
+    "prettier": "^1.16.4",
+    "react-is": "^16.13.1",
+    "rollup": "^2.23.1",
+    "rollup-plugin-analyzer": "^3.3.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "ts-jest": "^26.2.0",
+    "typescript": "^3.7.2"
+  }
+}
