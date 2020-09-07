@@ -45,13 +45,13 @@ const getBumpNameFromBumpLevel = (bumpLevel) => {
 const rawdata = fs.readFileSync(filePath);
 const githubEvent = JSON.parse(rawdata);
 
-const levelToBump = githubEvent.commits.reduce((currentBumpLevel, commit) => {
-    const bumpLevel = getCommitMessageBumpLevel(commit.message);
+const messages = (new String(execSync(`git rev-list --ancestry-path ${githubEvent.before}...${githubEvent.after} | xargs -n1 git log -n 1 --pretty=format:%s`))).split('\n');
+
+const levelToBump = messages.reduce((currentBumpLevel, commit) => {
+    const bumpLevel = getCommitMessageBumpLevel(commit);
 
     return bumpLevel > currentBumpLevel ? bumpLevel : currentBumpLevel;
 }, BumpLevelEnum.Patch);
-
-console.log(githubEvent)
 
 const externalVersion = JSON.parse(fs.readFileSync(externalPackageJson)).version
 
