@@ -3,11 +3,11 @@
 
 name: Publish to NPM
 
-#on:
-#  release:
-#    types: [created]
+on:
+  release:
+    types: [created]
 
-on: repository_dispatch
+# on: repository_dispatch
 
 jobs:
   publish-npm:
