@@ -1,6 +1,6 @@
 {
-  "name": "@samirboulil/akeneo-design-system",
-  "version": "0.0.104",
+  "name": "akeneo-design-system",
+  "version": "0.0.105",
   "description": "Akeneo design system",
   "main": "lib/index.js",
   "scripts": {
