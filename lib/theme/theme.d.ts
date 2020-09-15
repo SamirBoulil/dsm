@@ -1,4 +1,11 @@
 import { ThemedStyledProps } from 'styled-components';
+declare type FontSize = {
+    big: string;
+    bigger: string;
+    default: string;
+    small: string;
+    title: string;
+};
 declare type Color = {
     blue10: string;
     blue100: string;
@@ -46,9 +53,20 @@ declare type Color = {
     yellow80: string;
 };
 declare type Theme = {
+    palette: {
+        primary: string;
+        secondary: string;
+        tertiary: string;
+        warning: string;
+        danger: string;
+    };
+    fontSize: FontSize;
     color: Color;
 };
+declare type Level = 'primary' | 'secondary' | 'tertiary' | 'warning' | 'danger';
 declare const getColor: (color: string) => (props: AkeneoThemedProps) => string;
+declare const getColorForLevel: (level: Level, gradient: number) => (props: AkeneoThemedProps) => string;
+declare const getFontSize: (fontSize: string) => (props: AkeneoThemedProps) => string;
 export declare type AkeneoThemedProps<P = Record<string, unknown>> = ThemedStyledProps<P, Theme>;
-export type { Theme, Color };
-export { getColor };
+export type { Theme, FontSize, Color, Level };
+export { getColor, getColorForLevel, getFontSize };
