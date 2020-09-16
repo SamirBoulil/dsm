@@ -1,2 +1,3 @@
 export * from './Checkbox/Checkbox';
-export * from './Dummy/Dummy';
+export * from './Badge/Badge';
+export * from './Button/Button';

@@ -1,4 +1,4 @@
-import { Level } from '../../theme';
+import { Level } from 'theme';
 declare type BadgeProps = {
     /**
      * Level of the Badge defining it's color and outline.
